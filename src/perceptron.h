@@ -1,7 +1,3 @@
-//
-// Created by pavel on 27.03.17.
-//
-
 #ifndef PERCEPTRON_PERCEPTRON_H
 #define PERCEPTRON_PERCEPTRON_H
 
@@ -23,9 +19,9 @@ public:
 
     void learning(sensor *Sensor, int answer);
 
-    void input();
+    void load(int NumberSynapseFile);
 
-    void output();
+    void save(int NumberSynapseFile);
 
     friend ostream &operator<<(ostream &os, const perceptron &perceptron1);
 };

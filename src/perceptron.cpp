@@ -1,19 +1,12 @@
-//
-// Created by pavel on 27.03.17.
-//
-
 #include "perceptron.h"
 
 perceptron::perceptron() {
-    srand(time(0));
+    srand((unsigned int) time(0));
     bias = 0;
-    //bias = rand() % 9 - 5;
 
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 3; ++j) {
             synapse[i][j] = 0;
-            //synapse[i][j] = rand() % 9 - 5;
-
         }
     }
     limit = 10;
@@ -45,11 +38,14 @@ void perceptron::learning(sensor *Sensor, int answer) {
     }
 }
 
-void perceptron::input() {
-    ifstream fin("Synapse.txt");
+void perceptron::load(int NumberSynapseFile) {
+
+    char FileName[22] = "Synapses/Synapse0.txt";
+    FileName[16] = (char) (NumberSynapseFile + '0');
+    ifstream fin(FileName);
     if (!fin.is_open())
         cout << "Файл ввода синапсов не открыт!\n";
-
+    fin >> bias;
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 3; ++j) {
             fin >> synapse[i][j];
@@ -59,10 +55,13 @@ void perceptron::input() {
     fin.close();
 }
 
-void perceptron::output() {
-    ofstream fout("Synapse.txt");
+void perceptron::save(int NumberSynapseFile) {
+    char FileName[22] = "Synapses/Synapse0.txt";
+    FileName[16] = (char) (NumberSynapseFile + '0');
+    ofstream fout(FileName);
     if (!fout.is_open())
         cout << "Файл вывода синапсов не открыт!\n";
+    fout << bias << endl;
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 3; ++j) {
             fout << synapse[i][j] << " ";

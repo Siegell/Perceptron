@@ -1,7 +1,3 @@
-//
-// Created by pavel on 27.03.17.
-//
-
 #include "sensor.h"
 
 sensor::sensor() {
@@ -219,7 +215,7 @@ void sensor::output() {
         cout << "Файл вывода сенсоров не открыт!\n";
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 3; ++j) {
-            fout << map[i][j]<<" ";
+            fout << map[i][j] << " ";
         }
         fout << endl;
     }

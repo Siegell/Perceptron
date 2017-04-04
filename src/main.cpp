@@ -14,6 +14,11 @@ int main() {
             else Perceptron[i].learning(&Sensor, -1);
         }
     }
+
+    for (int i = 0; i < 10; ++i) {
+        Perceptron[i].load(i);
+    }
+
     for (int j = 0; j < 10; ++j) {
         cout << " j: " << j << endl;
         Sensor.CreateData(j);

@@ -1,7 +1,3 @@
-//
-// Created by pavel on 27.03.17.
-//
-
 #ifndef PERCEPTRON_SENSOR_H
 #define PERCEPTRON_SENSOR_H
 
@@ -14,9 +10,13 @@ class sensor {
     int map[5][3];
 public:
     sensor();
+
     void input();
+
     void CreateData(int N);
+
     void output();
+
     int getSensor(int i, int j);
 };
 
