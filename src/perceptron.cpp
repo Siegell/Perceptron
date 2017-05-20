@@ -83,3 +83,11 @@ ostream &operator<<(ostream &os, const perceptron &perceptron1) {
     }
     return os;
 }
+
+void perceptron::setLimit(int limit) {
+    perceptron::limit = limit;
+}
+
+void perceptron::setLearningSpeed(double LearningSpeed) {
+    perceptron::LearningSpeed = LearningSpeed;
+}

@@ -15,6 +15,10 @@ class perceptron {
 public:
     perceptron();
 
+    void setLimit(int limit);
+
+    void setLearningSpeed(double LearningSpeed);
+
     int answer(sensor *Sensor);
 
     void learning(sensor *Sensor, int answer);
