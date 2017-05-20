@@ -1,9 +1,7 @@
 #include "perceptron.h"
 
 perceptron::perceptron() {
-    srand((unsigned int) time(0));
     bias = 0;
-
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 3; ++j) {
             synapse[i][j] = 0;
@@ -35,7 +33,7 @@ void perceptron::learning(sensor *Sensor, int answer) {
         bias += direct * LearningSpeed;
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < 3; ++j) {
-                synapse[i][j] += direct * Sensor->getSensor(i, j) * LearningSpeed;
+                synapse[i][j] += direct * Sensor->getSensor(i, j) * LearningSpeed; //**
             }
         }
         y = this->answer(Sensor);

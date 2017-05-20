@@ -6,8 +6,8 @@ using namespace std;
 int main() {
 
     sensor Sensor;
-
     perceptron Perceptron[10];
+
     unsigned int LearningStartTime = clock();
     for (int k = 0; k < 10; ++k) {
         Sensor.CreateData(k);
