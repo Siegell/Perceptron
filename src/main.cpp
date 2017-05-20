@@ -9,7 +9,17 @@ int main() {
     perceptron Perceptron[10];
     for (double i = 0.7; i < 2; i += 0.05) {
         cout << "LearningSpeed " << i<< " ----------------------------" << endl;
-        for (double j = 5; j < 21; j += 1) {
+
+        for (int m = 0; m < 10; ++m) {
+            Perceptron[m].setLearningSpeed(i);
+        }
+
+        for (int j = 5; j < 30; j += 1) {
+
+            for (int m = 0; m < 10; ++m) {
+                Perceptron[m].setLimit(j);
+            }
+
             cout << "limit " << j << endl;
             unsigned int MeanTime = 0;
             for (int l = 0; l < 10; ++l) {
@@ -28,6 +38,12 @@ int main() {
             cout << "MeanTime " << MeanTime / 10  << endl << endl;
         }
     }
+
+    for (int m = 0; m < 10; ++m) {
+        Perceptron[m].setLearningSpeed(0.01);
+        Perceptron[m].setLimit(10);
+    }
+
     int Lose = 0, Right = 0;
     for (int j = 0; j < 10; ++j) {
         cout << "True answer: " << j;
