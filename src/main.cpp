@@ -7,18 +7,27 @@ int main() {
 
     sensor Sensor;
     perceptron Perceptron[10];
+    for (double i = 0.7; i < 2; i += 0.05) {
+        cout << "LearningSpeed " << i<< " ----------------------------" << endl;
+        for (double j = 5; j < 21; j += 1) {
+            cout << "limit " << j << endl;
+            unsigned int MeanTime = 0;
+            for (int l = 0; l < 10; ++l) {
 
-    unsigned int LearningStartTime = clock();
-    for (int k = 0; k < 10; ++k) {
-        Sensor.CreateData(k);
-        for (int i = 0; i < 10; ++i) {
-            if (i == k) Perceptron[i].learning(&Sensor, 1);
-            else Perceptron[i].learning(&Sensor, -1);
+                unsigned int LearningStartTime = clock();
+                for (int k = 0; k < 10; ++k) {
+                    Sensor.CreateData(k);
+                    for (int i = 0; i < 10; ++i) {
+                        if (i == k) Perceptron[i].learning(&Sensor, 1);
+                        else Perceptron[i].learning(&Sensor, -1);
+                    }
+                }
+                unsigned int LearningEndTime = clock();
+                MeanTime += LearningEndTime - LearningStartTime;
+            }
+            cout << "MeanTime " << MeanTime / 10  << endl << endl;
         }
     }
-    unsigned int LearningEndTime = clock();
-    cout << "Learning time: " << LearningEndTime - LearningStartTime << " msec" << endl;
-
     int Lose = 0, Right = 0;
     for (int j = 0; j < 10; ++j) {
         cout << "True answer: " << j;
