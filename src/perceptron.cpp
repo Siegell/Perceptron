@@ -14,14 +14,18 @@ perceptron::perceptron() {
 }
 
 int perceptron::answer(sensor *Sensor) {
+    if (Amount(Sensor) > limit) return 1;
+    else return -1;
+}
+
+double perceptron::Amount(sensor *Sensor) const {
     double Sum = bias;
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 3; ++j) {
             Sum += synapse[i][j] * Sensor->getSensor(i, j);
         }
     }
-    if (Sum > limit) return 1;
-    else return -1;
+    return Sum;
 }
 
 void perceptron::learning(sensor *Sensor, int answer) {

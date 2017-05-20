@@ -24,6 +24,8 @@ public:
     void save(int NumberSynapseFile);
 
     friend ostream &operator<<(ostream &os, const perceptron &perceptron1);
+
+    double Amount(sensor *Sensor) const;
 };
 
 
